@@ -6,13 +6,15 @@
 
 typedef struct  t_node
 {
-    int data; 
+    int data;
     struct t_node *next;
+    struct t_node *previous;
 }   t_node;
 
 typedef struct  t_stack
 {
-    t_node  *top;
+    t_node  *first;
+    t_node  *last;
     int size;
 }   t_stack;
 
