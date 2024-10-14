@@ -21,13 +21,15 @@ int main(int ac, char **av)
         return (0);
     stack_a = NULL;
     stack_b = NULL;
-    if (!ft_check_and_init_stack(ac, av, stack_a));
+    if (!ft_check_and_init_stack(ac, av, stack_a))
         return (0);
     if (ft_stack_size(stack_a) == 2)
         ft_sort_2(stack_a);
     else if (ft_stack_size(stack_a) == 3)
         ft_sort_3(stack_a);
     else
-        
+        ft_turk(stack_a, stack_b);
+    ft_free_stack(stack_a);
+    ft_free_stack(stack_b);
     return (0);
 }

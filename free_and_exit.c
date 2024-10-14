@@ -1,4 +1,4 @@
-#include "push_swap.c"
+#include "push_swap.h"
 
 void    ft_print_error_end_exit()
 {

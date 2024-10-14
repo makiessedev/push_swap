@@ -56,4 +56,5 @@ int ft_verify_already_sorted(t_node *stack)
             return (0);
         stack = stack->next;
     }
+    return (1);
 }

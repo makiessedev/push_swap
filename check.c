@@ -11,13 +11,13 @@ int ft_verify_repeat(t_node *list, int n)
     return (1);
 }
 
-static ft_handle_very_val_on_str(char **nbrs, int i, t_node *list)
+static int ft_handle_very_val_on_str(char **nbrs, int i, t_node *list)
 {
     while (i-- > 0)
     {
         if (!ft_verify_digit(nbrs[i]))
             return (0);
-        if (!ft_verify_min_or_max_int(ft_atoi(nbrs[i])));
+        if (!ft_verify_min_or_max_int(ft_atoi(nbrs[i])))
             return (0);
         if (!ft_verify_repeat(list, ft_atoi(nbrs[i])))
             return (0);
@@ -26,12 +26,12 @@ static ft_handle_very_val_on_str(char **nbrs, int i, t_node *list)
     return (1);
 }
 
-static ft_handle_unique_val_on_str(char **nbrs)
+static void ft_handle_unique_val_on_str(char **nbrs)
 {
     if (!(ft_verify_digit(nbrs[0])))
     {
         ft_free_mat(nbrs);
-        print_error_end_exit();
+        ft_print_error_end_exit();
     }
     if (!ft_verify_min_or_max_int(ft_atoi(nbrs[0])))
     {
@@ -70,8 +70,8 @@ int ft_check_and_init_stack(int ac, char **av, t_node *stack)
             ft_free_stack(stack);
             ft_print_error_end_exit();
         }
-        if (ft_verify_already_sorted(stack))
-            return (ft_free_stack(stack), 0);
-        return (1);
     }
+    if (ft_verify_already_sorted(stack))
+        return (ft_free_stack(stack), 0);
+    return (1);
 }
