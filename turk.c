@@ -1,6 +1,5 @@
 #include "push_swap.h"
 
-// ft_case_rrr_or_rr
 int ft_operation_nbrs(int   value, t_node **a, t_node **b, int direction)
 {
     int target;

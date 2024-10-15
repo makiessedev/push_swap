@@ -29,8 +29,8 @@ typedef struct s_vars
     int direction_b;
     int a_index;
     int b_index;
-    int a_value; // value
-    int b_value; // arg
+    int a_value;
+    int b_value;
 
 }   t_vars;
 
