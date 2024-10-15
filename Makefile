@@ -5,7 +5,7 @@ C_FILES = check.c free_and_exit.c push_swap.c \
 OBJ = $(C_FILES:.c=.o)
 LIBFT = ./libft
 CC = cc
-C_FLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+C_FLAGS = -Wall -Wextra -Werror # -fsanitize=address -g
 
 all: $(LIBFT) $(NAME)
 
@@ -13,6 +13,7 @@ $(LIBFT):
 	make -C $(LIBFT)
 
 $(NAME): $(OBJ)
+	make -C $(LIBFT)
 	$(CC) $(C_FLAGS) $(OBJ) -o $(NAME) -L$(LIBFT) -lft
 
 %.o: %.c
@@ -26,8 +27,6 @@ fclean: clean
 	rm -rf $(NAME)
 	make fclean -C $(LIBFT)
 
-re:
-	fclean all
-	make re -C $(LIBFT)
+re: fclean all
 
 .PHONY: all clean fclean re

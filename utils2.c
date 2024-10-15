@@ -48,19 +48,19 @@ int ft_stack_size(t_node *stack)
     return (i);
 }
 
-void    ft_put_min_on_top(t_node *stack)
+void    ft_put_min_on_top(t_node **stack)
 {
     int min;
     int direction;
     int index;
 
-    min = ft_get_min_stack(stack);
-    index = ft_find_index(stack, min);
-    if (index <= ft_stack_size(stack) / 2)
+    min = ft_get_min_stack(*stack);
+    index = ft_find_index(*stack, min);
+    if (index <= ft_stack_size(*stack) / 2)
         direction = -1;
-    else if (index > ft_stack_size(stack) / 2)
+    else if (index > ft_stack_size(*stack) / 2)
         direction = 1;
-    while (stack->data != min)
+    while ((*stack)->data != min)
     {
         if (direction == -1)
             ft_ra(stack, 1);
