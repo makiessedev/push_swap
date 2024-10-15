@@ -13,7 +13,7 @@ int ft_verify_repeat(t_node *list, int n)
 
 static int ft_handle_very_val_on_very_arg(char **nbrs, /* int i, */ t_node **list)
 {
-       char **n2;
+    char **n2;
     int total_count = 0;
     int index = 0;
     char **numbers = NULL;
@@ -38,10 +38,8 @@ static int ft_handle_very_val_on_very_arg(char **nbrs, /* int i, */ t_node **lis
     }
     numbers[index] = NULL;
 
-    while (--total_count > 0)
+    while (--total_count >= 0)
     {
-        if (!numbers[total_count])
-            return (0);
         if (!ft_verify_digit(numbers[total_count]))
             return (0);
         if (!ft_verify_min_or_max_int(ft_atoi(numbers[total_count])))
@@ -49,6 +47,7 @@ static int ft_handle_very_val_on_very_arg(char **nbrs, /* int i, */ t_node **lis
         if (!ft_verify_repeat(*list, ft_atoi(numbers[total_count])))
             return (0);
         ft_add_on_stack(list, ft_atoi(numbers[total_count]));
+        printf("%i->", ft_atoi(numbers[total_count]));
     }
     return (1);
 }
@@ -111,8 +110,7 @@ int ft_check_and_init_stack(int ac, char **av, t_node **stack)
         if (!ft_handle_very_val_on_very_arg(av, /* ac, */ stack))
         {
             ft_free_stack(*stack);
-            //ft_print_error_end_exit();
-            exit(1);
+            ft_print_error_end_exit();
         }
     }
     if (ft_verify_already_sorted(*stack))
