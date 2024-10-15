@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int ft_verify_min_or_max_int(int n)
+int ft_verify_min_or_max_int(long n)
 {
     if (n > INT_MAX || n < INT_MIN)
         return (0);
@@ -35,19 +35,6 @@ int ft_get_min_stack(t_node *stack)
     return (tmp);
 }
 
-int ft_stack_size(t_node *stack)
-{
-    int i;
-
-    i = 0;
-    while (stack)
-    {
-        i++;
-        stack = stack->next;
-    }
-    return (i);
-}
-
 void    ft_put_min_on_top(t_node **stack)
 {
     int min;
@@ -67,4 +54,30 @@ void    ft_put_min_on_top(t_node **stack)
         else if (direction == 1)
             ft_rra(stack, 1);
     }
+}
+
+char    **get_each_nbr(char **av, char **numbers, int nbrs_size)
+{
+    char **splited;
+    int num_index;
+    int i;
+    int j;
+
+    num_index = 0;
+    i = 1;
+    numbers = malloc(sizeof(char *) * (nbrs_size + 1));
+    while (av[i])
+    {
+        splited = ft_split(av[i], ' ');
+        j = 0;
+        while (splited[j])
+        {
+            numbers[num_index++] = splited[j];
+            j++;
+        }
+        free(splited);
+        i++;
+    }
+    numbers[num_index] = NULL;
+    return (numbers);
 }

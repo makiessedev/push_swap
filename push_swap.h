@@ -62,14 +62,15 @@ int ft_verify_digit(char *s);
 int ft_verify_already_sorted(t_node *stack);
 
 /* utils2.c */
-int ft_verify_min_or_max_int(int n);
+int ft_verify_min_or_max_int(long n);
 int ft_get_max_stack(t_node *stack);
 int ft_get_min_stack(t_node *stack);
-int ft_stack_size(t_node *stack);
 void    ft_put_min_on_top(t_node **stack);
+char    **get_each_nbr(char **av, char **numbers, int nbrs_size);
 
 /* push_swap.c */
 void    ft_add_on_stack(t_node **stack, int value);
+int ft_stack_size(t_node *stack);
 
 /* free_and_exit.c */
 void    ft_print_error_end_exit();
@@ -100,5 +101,6 @@ void    ft_set_targets(t_vars *vars, t_target *target_data, t_node **a, t_node *
 t_target    ft_update_targets(t_node **a, t_node **b);
 void    ft_rrr_or_rr(t_node **a, t_node **b, t_target target_data);
 void    ft_order_b_and_push_to_a(t_node **a, t_node **b, t_target target_data);
+int    count_each_value(char **nbrs);
 
 # endif

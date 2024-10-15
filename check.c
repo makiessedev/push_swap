@@ -11,32 +11,15 @@ int ft_verify_repeat(t_node *list, int n)
     return (1);
 }
 
-static int ft_handle_very_val_on_very_arg(char **nbrs, /* int i, */ t_node **list)
+static int ft_handle_very_val_on_very_arg(char **nbrs, t_node **list)
 {
-    char **n2;
     int total_count = 0;
-    int index = 0;
-    char **numbers = NULL;
+    char **numbers;
 
-    for (int i = 1; nbrs[i]; i++) {
-        n2 = ft_split(nbrs[i], ' ');
-        for (int j = 0; n2[j]; j++) {
-            total_count++;
-        }
-        ft_free_mat(n2);
-    }
-
-    numbers = malloc(sizeof(char *) * (total_count + 1));
-    if (!numbers) return 0;
-
-    for (int i = 1; nbrs[i]; i++) {
-        n2 = ft_split(nbrs[i], ' ');
-        for (int j = 0; n2[j]; j++) {
-            numbers[index++] = n2[j];
-        }
-        free(n2);
-    }
-    numbers[index] = NULL;
+    total_count = count_each_value(nbrs);
+    numbers = NULL;
+    numbers = get_each_nbr(nbrs, numbers, total_count);
+    
 
     while (--total_count >= 0)
     {
@@ -47,7 +30,6 @@ static int ft_handle_very_val_on_very_arg(char **nbrs, /* int i, */ t_node **lis
         if (!ft_verify_repeat(*list, ft_atoi(numbers[total_count])))
             return (0);
         ft_add_on_stack(list, ft_atoi(numbers[total_count]));
-        printf("%i->", ft_atoi(numbers[total_count]));
     }
     return (1);
 }
@@ -107,7 +89,7 @@ int ft_check_and_init_stack(int ac, char **av, t_node **stack)
     }
     else if (ac > 2)
     {
-        if (!ft_handle_very_val_on_very_arg(av, /* ac, */ stack))
+        if (!ft_handle_very_val_on_very_arg(av, stack))
         {
             ft_free_stack(*stack);
             ft_print_error_end_exit();

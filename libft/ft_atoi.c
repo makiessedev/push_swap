@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int	capture_the_beast(const char *str, int neg_flag, int i)
+static long	capture_the_beast(const char *str, long neg_flag, long i)
 {
 	long	result;
 	long	previous_result;
@@ -34,10 +34,10 @@ static int	capture_the_beast(const char *str, int neg_flag, int i)
 	return (result * neg_flag);
 }
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
-	int		i;
-	int		neg_flag;
+	long		i;
+	long		neg_flag;
 
 	i = 0;
 	neg_flag = 1;

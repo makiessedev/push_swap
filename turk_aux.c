@@ -81,3 +81,25 @@ void    ft_order_b_and_push_to_a(t_node **a, t_node **b, t_target target_data)
     }
     ft_pa(a, b);
 }
+
+int    count_each_value(char **nbrs)
+{
+    char    **splited;
+    int total_count;
+    int i;
+    int j;
+
+    total_count = 0;
+    i = 1;
+    while (nbrs[i]) {
+        splited = ft_split(nbrs[i], ' ');
+        j = 0;
+        while (splited[j]) {
+            total_count++;
+            j++;
+        }
+        ft_free_mat(splited);
+        i++;
+    }
+    return (total_count);
+}

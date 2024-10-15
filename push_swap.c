@@ -1,5 +1,18 @@
 #include "push_swap.h"
 
+int ft_stack_size(t_node *stack)
+{
+    int i;
+
+    i = 0;
+    while (stack)
+    {
+        i++;
+        stack = stack->next;
+    }
+    return (i);
+}
+
 void    ft_add_on_stack(t_node **stack, int value)
 {
     t_node  *node;
