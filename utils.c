@@ -34,6 +34,8 @@ int ft_verify_digit(char *s)
     i = 0;
     if (s[0] == '-' || s[0] == '+')
         i++;
+    if (!s[i])
+        ft_print_error_end_exit();
     while (s[i])
     {
         if (!ft_isdigit(s[i]))
