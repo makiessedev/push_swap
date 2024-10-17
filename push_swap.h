@@ -1,106 +1,76 @@
-#ifndef PUSH_SWAP
-# define PUSH_SWAP
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-# include "./libft/libft.h"
+# include <unistd.h>
+# include <stddef.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <limits.h>
+# include <stdbool.h>
 
-typedef struct  s_node
+typedef struct s_stack
 {
-    int data;
-    struct s_node *next;
-}   t_node;
+	long			nbr;
+	struct s_stack	*next;
+}	t_stack;
 
-typedef struct s_target
-{
-    int a_value;
-    int b_value;
-    int direction_a;
-    int direction_b;
-}   t_target;
+void		list_args(char **argv, t_stack **stack_a);
+void		ft_add_back(t_stack **stack, t_stack *stack_new);
+t_stack		*ft_stack_new(int content);
+int			check_args(char **argv);
+void		alpha_check(char **argv);
+int			check_error(char **argv, int i, int j);
+int			ft_checkdup(t_stack *a);
+int			ft_isalpha(int c);
+int			sign(int c);
+int			digit(int c);
+int			space(int c);
+void		ft_error(void);
+void		ft_free(t_stack **lst);
+t_stack		*ft_lstlast(t_stack *lst);
+void		ft_ra(t_stack **a, int j);
+void		ft_rb(t_stack **b, int j);
+void		ft_sa(t_stack **a, int j);
+void		ft_pa(t_stack **a, t_stack **b, int j);
+void		ft_pb(t_stack **stack_a, t_stack **stack_b, int j);
+void		ft_rra(t_stack **a, int j);
+void		ft_ss(t_stack **a, t_stack **b, int j);
+void		ft_rr(t_stack **a, t_stack **b, int j);
+void		ft_rrr_sub(t_stack **b, int j);
+void		ft_rrr(t_stack **a, t_stack **b, int j);
+int			ft_lstsize(t_stack *lst);
+int			ft_min(t_stack *a);
+int			ft_max(t_stack *a);
+int			ft_find_index(t_stack *a, int nbr);
+int			ft_find_place_b(t_stack *stack_b, int nbr_push);
+int			ft_find_place_a(t_stack *a, int nbr);
+void		ft_sort(t_stack **stack_a);
+int			ft_checksorted(t_stack *stack_a);
+void		ft_sort_three(t_stack **stack_a);
+t_stack		*ft_parse(int argc, char **argv);
+t_stack		*ft_parse_args_quoted(char **argv);
+void		ft_freestr(char **lst);
+int			ft_case_rarb_a(t_stack *a, t_stack *b, int c);
+int			ft_case_rrarrb_a(t_stack *a, t_stack *b, int c);
+int			ft_case_rarrb_a(t_stack *a, t_stack *b, int c);
+int			ft_case_rrarb_a(t_stack *a, t_stack *b, int c);
+int			ft_case_rarb(t_stack *a, t_stack *b, int c);
+int			ft_case_rrarrb(t_stack *a, t_stack *b, int c);
+int			ft_case_rrarb(t_stack *a, t_stack *b, int c);
+int			ft_case_rarrb(t_stack *a, t_stack *b, int c);
+int			ft_rotate_type_ab(t_stack *a, t_stack *b);
+int			ft_rotate_type_ba(t_stack *a, t_stack *b);
+int			ft_apply_rarb(t_stack **a, t_stack **b, int c, char s);
+int			ft_apply_rrarrb(t_stack **a, t_stack **b, int c, char s);
+int			ft_apply_rrarb(t_stack **a, t_stack **b, int c, char s);
+int			ft_apply_rarrb(t_stack **a, t_stack **b, int c, char s);
+void		ft_rrb(t_stack **b, int j);
+t_stack		*ft_process(int argc, char **argv);
+void		ft_sb(t_stack **b, int j);
+void		ft_sort_b_till_3(t_stack **stack_a, t_stack **stack_b);
+t_stack		*ft_sub_process(char **argv);
+int	ft_atoi(const char *str);
+char	**ft_split(char const *s, char c);
+int	ft_isdigit(int c);
+size_t	ft_strlen(const char *s);
 
-typedef struct s_vars
-{
-    long int    cheapest_nbr;
-    int stack_a;
-    int stack_b;
-    int direction_a;
-    int direction_b;
-    int a_index;
-    int b_index;
-    int a_value;
-    int b_value;
-
-}   t_vars;
-
-/* util.c */
-t_node  *ft_get_stack_first(t_node *node);
-t_node  *ft_get_stack_last(t_node *node);
-
-
-/* swap.c */
-void    ft_sa(t_node **a, int flag);
-void    ft_sb(t_node **b, int flag);
-void    ft_ss(t_node **a, t_node **b);
-
-/* rotate.c */
-void    ft_ra(t_node **a, int flag);
-void    ft_rb(t_node **b, int flag);
-void    ft_rra(t_node **a, int flag);
-void    ft_rrb(t_node **b, int flag);
-
-/* rotate2.c */
-void    ft_rrr(t_node **a, t_node **b);
-void    ft_rr(t_node **a, t_node **b);
-
-/* utils.c */
-t_node  *ft_get_stack_first(t_node *node);
-t_node  *ft_get_stack_last(t_node *node);
-int ft_array_len(char **array);
-int ft_verify_digit(char *s);
-int ft_verify_already_sorted(t_node *stack);
-
-/* utils2.c */
-int ft_verify_min_or_max_int(long n);
-int ft_get_max_stack(t_node *stack);
-int ft_get_min_stack(t_node *stack);
-void    ft_put_min_on_top(t_node **stack);
-char    **get_each_nbr(char **av, char **numbers, int nbrs_size);
-
-/* push_swap.c */
-void    ft_add_on_stack(t_node **stack, int value);
-int ft_stack_size(t_node *stack);
-
-/* free_and_exit.c */
-void    ft_print_error_end_exit();
-void    ft_free_mat(char **mat);
-void    ft_free_stack(t_node *stack);
-
-/* check.c */
-int ft_check_and_init_stack(int ac, char **av, t_node **stack);
-int ft_verify_repeat(t_node *list, int n);
-
-/* sort_2_and_3.c */
-void ft_sort_2(t_node **stack);
-void ft_sort_3(t_node **stack);
-
-/* push.c */
-void    ft_pb(t_node **a, t_node **b);
-void    ft_pa(t_node **a, t_node **b);
-
-/* turk.c */
-int    ft_find_target(t_node **a, int b);
-void    ft_turk(t_node **a, t_node **b);
-int    ft_find_index(t_node *a, int value);
-int ft_operation_nbrs(int   value, t_node **a, t_node **b, int direction);
-void    ft_set_direction(t_node **a, t_node **b, t_vars *vars);
-
-/* turk_aux.c */
-void    ft_set_targets(t_vars *vars, t_target *target_data, t_node **a, t_node **b);
-t_target    ft_update_targets(t_node **a, t_node **b);
-void    ft_rrr_or_rr(t_node **a, t_node **b, t_target target_data);
-void    ft_order_b_and_push_to_a(t_node **a, t_node **b, t_target target_data);
-int    count_each_value(char **nbrs);
-
-# endif
+#endif

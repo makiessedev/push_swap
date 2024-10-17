@@ -1,32 +1,54 @@
 NAME = push_swap
-C_FILES = check.c free_and_exit.c push_swap.c \
-			push.c rotate.c rotate2.c sort_2_and_3.c \
-			swap.c turk_aux.c turk.c utils.c utils2.c
-OBJ = $(C_FILES:.c=.o)
-LIBFT = ./libft
-CC = cc
-C_FLAGS = -Wall -Wextra -Werror # -fsanitize=address -g
+CC = gcc
+RM = rm -f
+FLAGS = -Wall -Wextra -Werror
 
-all: $(LIBFT) $(NAME)
+SRC =	push_swap.c \
+		algorithm.c \
+		ft_add_back.c \
+		ft_stack_new.c \
+		ft_check_utils.c \
+		ft_parse.c \
+		solver_utils_ab.c \
+		solver_utils_ba.c \
+		ft_rotate_and_push.c \
+		operations.c \
+		operations_2.c \
+		operations_3.c \
+		ft_check_dup.c \
+		ft_check_sorted.c \
+		ft_error_print.c \
+		ft_free.c \
+		lst_utils.c \
+		lst_utils_2.c \
+		ft_parse_args_quoted.c \
+		ft_list_args.c \
+		ft_check_args.c \
+		ft_sort_big.c \
+		ft_sort_three.c \
+		ft_rotate_type.c \
+		ft_atoi.c \
+		ft_split.c \
+		ft_isdigit.c \
+		ft_strlen.c
+			
 
-$(LIBFT):
-	make -C $(LIBFT)
+OBJ = ${SRC:.c=.o}
 
-$(NAME): $(OBJ)
-	make -C $(LIBFT)
-	$(CC) $(C_FLAGS) $(OBJ) -o $(NAME) -L$(LIBFT) -lft
+.c.o:
+	${CC} -c $< -o ${<:.c=.o}
 
-%.o: %.c
-	$(CC) $(C_FLAGS) -c $< -o $@
+${NAME}: ${OBJ}
+	${CC} ${FLAGS} ${OBJ} -o ${NAME}
+
+all: ${NAME}
 
 clean:
-	rm -rf $(OBJ)
-	make clean -C $(LIBFT)
+	${RM} ${OBJ}
 
 fclean: clean
-	rm -rf $(NAME)
-	make fclean -C $(LIBFT)
+	${RM} ${NAME}
 
-re: fclean all
+re: clean all
 
 .PHONY: all clean fclean re

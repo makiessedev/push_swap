@@ -1,10 +1,5 @@
 {
     "files.associations": {
-        "push_swap.h": "c",
-        "array": "c",
-        "string": "c",
-        "string_view": "c",
-        "type_traits": "c",
-        "algorithm": "c"
+        "push_swap.h": "c"
     }
 }
