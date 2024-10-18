@@ -54,7 +54,7 @@ void		ft_rrb(t_stack **b, int j);
 t_stack		*ft_validate_and_init_stack(int argc, char **argv);
 void		ft_sb(t_stack **b, int j);
 void		ft_sort_till_3(t_stack **stack_a, t_stack **stack_b);
-int	ft_atoi2(const char *str);
+int	ft_atoi(const char *str);
 char	**ft_split(char const *s, char c);
 int	ft_isdigit(int c);
 
