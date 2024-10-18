@@ -4,14 +4,14 @@ int	main(int argc, char **argv)
 {
 	t_stack	*a;
 
-	a = ft_process(argc, argv);
-	if (!a || ft_checkdup(a))
+	a = ft_validate_and_init_stack(argc, argv);
+	if (!a || ft_check_dup(a))
 	{
 		ft_free(&a);
-		ft_error();
+		ft_print_error_and_exit();
 	}
-	if (!ft_checksorted(a))
-		ft_sort(&a);
+	if (!ft_check_already_sort(a))
+		ft_sort_stack(&a);
 	ft_free(&a);
 	return (0);
 }

@@ -1,5 +1,17 @@
 #include "push_swap.h"
 
+static size_t	ft_strlen(const char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		i++;
+	}
+	return (i);
+}
+
 static int	count_words(const char *str, char c)
 {
 	int	i;

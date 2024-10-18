@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int	ft_rotate_type_ba(t_stack *a, t_stack *b)
+int	ft_check_best_rotate_b_to_a(t_stack *a, t_stack *b)
 {
 	int		i;
 	t_stack	*tmp;
@@ -22,7 +22,7 @@ int	ft_rotate_type_ba(t_stack *a, t_stack *b)
 	return (i);
 }
 
-int	ft_rotate_type_ab(t_stack *a, t_stack *b)
+int	ft_check_best_rotate_a_to_b(t_stack *a, t_stack *b)
 {
 	int		i;
 	t_stack	*tmp;

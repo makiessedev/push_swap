@@ -2,17 +2,17 @@
 
 int	ft_atoi2(const char *str)
 {
-	int				mod;
+	int				sign;
 	long long int	i;
 
 	i = 0;
-	mod = 1;
+	sign = 1;
 	while (*str == ' ' || *str == '\t' || *str == '\n' || *str == '\f'
 		|| *str == '\v' || *str == '\r')
 		str++;
 	if (*str == '-')
 	{
-		mod = -1;
+		sign = -1;
 		str++;
 	}
 	else if (*str == '+')
@@ -20,16 +20,16 @@ int	ft_atoi2(const char *str)
 	while (*str)
 	{
 		if (!ft_isdigit(*str))
-			ft_error();
+			ft_print_error_and_exit();
 		i = i * 10 + (*str - 48);
 		str++;
 	}
-	if ((mod * i) > 2147483647 || (mod * i) < -2147483648)
-		ft_error();
-	return (mod * i);
+	if ((sign * i) > 2147483647 || (sign * i) < -2147483648)
+		ft_print_error_and_exit();
+	return (sign * i);
 }
 
-t_stack	*ft_sub_process(char **argv)
+static t_stack	*ft_case_unique_string(char **argv)
 {
 	t_stack	*a;
 	char	**tmp;
@@ -50,7 +50,7 @@ t_stack	*ft_sub_process(char **argv)
 	return (a);
 }
 
-t_stack	*ft_process(int argc, char **argv)
+t_stack	*ft_validate_and_init_stack(int argc, char **argv)
 {
 	t_stack	*a;
 	int		i;
@@ -59,9 +59,9 @@ t_stack	*ft_process(int argc, char **argv)
 	i = 1;
 	a = NULL;
 	if (argc < 2)
-		ft_error();
+		ft_print_error_and_exit();
 	if (argc == 2)
-		a = ft_sub_process(argv);
+		a = ft_case_unique_string(argv);
 	else
 	{
 		while (i < argc)

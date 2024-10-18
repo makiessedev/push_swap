@@ -1,14 +1,14 @@
 #include "push_swap.h"
 
-void	ft_sort_b_till_3(t_stack **stack_a, t_stack **stack_b)
+void	ft_sort_till_3(t_stack **stack_a, t_stack **stack_b)
 {
 	int		i;
 	t_stack	*tmp;
 
-	while (ft_lstsize(*stack_a) > 3 && !ft_checksorted(*stack_a))
+	while (ft_lstsize(*stack_a) > 3 && !ft_check_already_sort(*stack_a))
 	{
 		tmp = *stack_a;
-		i = ft_rotate_type_ab(*stack_a, *stack_b);
+		i = ft_check_best_rotate_a_to_b(*stack_a, *stack_b);
 		while (i >= 0)
 		{
 			if (i == ft_case_rarb(*stack_a, *stack_b, tmp->nbr))
@@ -30,13 +30,13 @@ t_stack	*ft_sort_b(t_stack **stack_a)
 	t_stack	*stack_b;
 
 	stack_b = NULL;
-	if (ft_lstsize(*stack_a) > 3 && !ft_checksorted(*stack_a))
+	if (ft_lstsize(*stack_a) > 3 && !ft_check_already_sort(*stack_a))
 		ft_pb(stack_a, &stack_b, 0);
-	if (ft_lstsize(*stack_a) > 3 && !ft_checksorted(*stack_a))
+	if (ft_lstsize(*stack_a) > 3 && !ft_check_already_sort(*stack_a))
 		ft_pb(stack_a, &stack_b, 0);
-	if (ft_lstsize(*stack_a) > 3 && !ft_checksorted(*stack_a))
-		ft_sort_b_till_3(stack_a, &stack_b);
-	if (!ft_checksorted(*stack_a))
+	if (ft_lstsize(*stack_a) > 3 && !ft_check_already_sort(*stack_a))
+		ft_sort_till_3(stack_a, &stack_b);
+	if (!ft_check_already_sort(*stack_a))
 		ft_sort_three(stack_a);
 	return (stack_b);
 }
@@ -49,7 +49,7 @@ t_stack	**ft_sort_a(t_stack **stack_a, t_stack **stack_b)
 	while (*stack_b)
 	{
 		tmp = *stack_b;
-		i = ft_rotate_type_ba(*stack_a, *stack_b);
+		i = ft_check_best_rotate_b_to_a(*stack_a, *stack_b);
 		while (i >= 0)
 		{
 			if (i == ft_case_rarb_a(*stack_a, *stack_b, tmp->nbr))
@@ -67,7 +67,7 @@ t_stack	**ft_sort_a(t_stack **stack_a, t_stack **stack_b)
 	return (stack_a);
 }
 
-void	ft_sort(t_stack **stack_a)
+void	ft_sort_stack(t_stack **stack_a)
 {
 	t_stack	*stack_b;
 	int		i;

@@ -10,7 +10,7 @@ void	ft_sort_three(t_stack **stack_a)
 	else if (ft_max(*stack_a) == (*stack_a)->nbr)
 	{
 		ft_ra(stack_a, 0);
-		if (!ft_checksorted(*stack_a))
+		if (!ft_check_already_sort(*stack_a))
 			ft_sa(stack_a, 0);
 	}
 	else
