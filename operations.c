@@ -74,14 +74,8 @@ void	ft_ss(t_stack **a, t_stack **b, int j)
 
 	if (!*a || !((*a)->next) || !*b || !((*b)->next))
 		return ;
-	tmp = *a;
-	*a = (*a)->next;
-	tmp->next = (*a)->next;
-	(*a)->next = tmp;
-	tmp = *b;
-	*b = (*b)->next;
-	tmp->next = (*b)->next;
-	(*b)->next = tmp;
+	ft_sa(a, 1);
+	ft_sb(b, 1);
 	if (j == 0)
 		write(1, "ss\n", 3);
 }
