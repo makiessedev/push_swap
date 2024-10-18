@@ -1,51 +1,5 @@
 #include "push_swap.h"
 
-int    count_each_value(char **nbrs)
-{
-    char    **splited;
-    int total_count;
-    int i;
-    int j;
-    total_count = 0;
-    i = 1;
-    while (nbrs[i]) {
-        splited = ft_split(nbrs[i], ' ');
-        j = 0;
-        while (splited[j]) {
-            total_count++;
-            j++;
-        }
-        ft_freestr(splited);
-        i++;
-    }
-    return (total_count);
-}
-
-char    **get_each_nbr(char **av, char **numbers, int nbrs_size)
-{
-    char **splited;
-    int num_index;
-    int i;
-    int j;
-    num_index = 0;
-    i = 1;
-    numbers = malloc(sizeof(char *) * (nbrs_size + 1));
-    while (av[i])
-    {
-        splited = ft_split(av[i], ' ');
-        j = 0;
-        while (splited[j])
-        {
-            numbers[num_index++] = splited[j];
-            j++;
-        }
-        free(splited);
-        i++;
-    }
-    numbers[num_index] = NULL;
-    return (numbers);
-}
-
 int	ft_atoi(const char *str)
 {
 	int				sign;
@@ -114,8 +68,8 @@ t_stack	*ft_validate_and_init_stack(int argc, char **argv)
 		a = ft_case_unique_string(argv);
 	else
 	{
-		total_count = count_each_value(argv);
-		nbrs = get_each_nbr(argv, nbrs, total_count);
+		total_count = ft_count_each_value(argv);
+		nbrs = ft_get_each_nbr(argv, nbrs, total_count);
 		while (i < total_count)
 		{
 			j = ft_atoi(nbrs[i]);

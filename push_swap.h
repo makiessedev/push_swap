@@ -57,5 +57,7 @@ void		ft_sort_till_3(t_stack **stack_a, t_stack **stack_b);
 int	ft_atoi(const char *str);
 char	**ft_split(char const *s, char c);
 int	ft_isdigit(int c);
+int    ft_count_each_value(char **nbrs);
+char    **ft_get_each_nbr(char **av, char **numbers, int nbrs_size);
 
 #endif
