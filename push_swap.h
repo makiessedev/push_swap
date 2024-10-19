@@ -3,7 +3,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <string.h>
 
 typedef struct s_stack
 {
@@ -63,5 +62,6 @@ int    ft_count_each_value(char **nbrs);
 char    **ft_get_each_nbr(char **av, char **numbers, int nbrs_size);
 char	*ft_strdup(const char *s);
 size_t	ft_strlen(const char *s);
+int ft_is_only_space(char *str);
 
 #endif
