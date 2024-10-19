@@ -83,6 +83,7 @@ t_stack	*ft_validate_and_init_stack(int argc, char **argv)
 			if (j == ATOI_INDICATOR_ERROR)
 			{
 				ft_freestr(nbrs);
+				free(nbrs);
 				ft_free(&a);
 				ft_print_error_and_exit();
 			}
@@ -90,6 +91,7 @@ t_stack	*ft_validate_and_init_stack(int argc, char **argv)
 			i++;
 		}
 		ft_freestr(nbrs);
+		free(nbrs);
 	}
 	return (a);
 }

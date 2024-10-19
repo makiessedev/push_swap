@@ -16,6 +16,7 @@ int    ft_count_each_value(char **nbrs)
             j++;
         }
         ft_freestr(splited);
+        free(splited);
         i++;
     }
     return (total_count);
