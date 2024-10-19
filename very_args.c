@@ -45,7 +45,7 @@ char    **ft_get_each_nbr(char **av, char **numbers, int nbrs_size)
         while (splited[j])
         {
             if (num_index < nbrs_size)
-                numbers[num_index++] = strdup(splited[j]);
+                numbers[num_index++] = ft_strdup(splited[j]);
             else
                 break ;
             j++;

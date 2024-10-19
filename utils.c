@@ -43,20 +43,22 @@ void	ft_print_error_and_exit(void)
 	exit(1);
 }
 
-int	ft_check_dup(t_stack *a)
+char	*ft_strdup(const char *s)
 {
-	t_stack	*tmp;
+	char	*dest;
+	int		leng_s;
+	int		i;
 
-	while (a)
+	leng_s = ft_strlen((const char *)s);
+	dest = (char *)malloc(sizeof(char) * (leng_s +1));
+	if (!dest)
+		return (NULL);
+	i = 0;
+	while (s[i])
 	{
-		tmp = a->next;
-		while (tmp)
-		{
-			if (a->nbr == tmp->nbr)
-				return (1);
-			tmp = tmp->next;
-		}
-		a = a->next;
+		dest[i] = s[i];
+		i++;
 	}
-	return (0);
+	dest[i] = '\0';
+	return ((char *)dest);
 }

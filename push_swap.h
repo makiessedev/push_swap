@@ -61,5 +61,7 @@ char	**ft_split(char const *s, char c);
 int	ft_isdigit(int c);
 int    ft_count_each_value(char **nbrs);
 char    **ft_get_each_nbr(char **av, char **numbers, int nbrs_size);
+char	*ft_strdup(const char *s);
+size_t	ft_strlen(const char *s);
 
 #endif
