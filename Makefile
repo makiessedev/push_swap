@@ -1,7 +1,7 @@
 NAME = push_swap
-CC = gcc
+CC = cc
 RM = rm -f
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror
 
 SRC =	push_swap.c \
 		ft_validate_and_init_stack.c \
@@ -22,9 +22,6 @@ SRC =	push_swap.c \
 		very_args.c
 
 OBJ = ${SRC:.c=.o}
-
-.c.o:
-	${CC} -c $< -o ${<:.c=.o}
 
 ${NAME}: ${OBJ}
 	${CC} ${FLAGS} ${OBJ} -o ${NAME}
