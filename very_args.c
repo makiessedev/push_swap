@@ -30,15 +30,26 @@ char    **ft_get_each_nbr(char **av, char **numbers, int nbrs_size)
     num_index = 0;
     i = 1;
     numbers = malloc(sizeof(char *) * (nbrs_size + 1));
-    while (av[i])
+    if (!numbers)
+        return (NULL);
+    while (av[i] && num_index < nbrs_size)
     {
         splited = ft_split(av[i], ' ');
+        if (!splited)
+        {
+            free(numbers);
+            return (NULL);
+        }
         j = 0;
         while (splited[j])
         {
-            numbers[num_index++] = splited[j];
+            if (num_index < nbrs_size)
+                numbers[num_index++] = strdup(splited[j]);
+            else
+                break ;
             j++;
         }
+        ft_freestr(splited);
         free(splited);
         i++;
     }

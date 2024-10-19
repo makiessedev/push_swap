@@ -1,7 +1,7 @@
 NAME = push_swap
 CC = gcc
 RM = rm -f
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 
 SRC =	push_swap.c \
 		ft_validate_and_init_stack.c \

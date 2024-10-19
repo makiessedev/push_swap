@@ -3,12 +3,15 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <string.h>
 
 typedef struct s_stack
 {
 	long			nbr;
 	struct s_stack	*next;
 }	t_stack;
+
+# define ATOI_INDICATOR_ERROR -214748364819
 
 void		ft_add_back(t_stack **stack, t_stack *stack_new);
 t_stack		*ft_stack_new(int content);
@@ -24,7 +27,6 @@ void		ft_pb(t_stack **stack_a, t_stack **stack_b, int j);
 void		ft_rra(t_stack **a, int j);
 void		ft_ss(t_stack **a, t_stack **b, int j);
 void		ft_rr(t_stack **a, t_stack **b, int j);
-void		ft_rrr_sub(t_stack **b, int j);
 void		ft_rrr(t_stack **a, t_stack **b, int j);
 int			ft_lstsize(t_stack *lst);
 int			ft_min(t_stack *a);
@@ -54,7 +56,7 @@ void		ft_rrb(t_stack **b, int j);
 t_stack		*ft_validate_and_init_stack(int argc, char **argv);
 void		ft_sb(t_stack **b, int j);
 void		ft_sort_till_3(t_stack **stack_a, t_stack **stack_b);
-int	ft_atoi(const char *str);
+long int	ft_atoi(const char *str);
 char	**ft_split(char const *s, char c);
 int	ft_isdigit(int c);
 int    ft_count_each_value(char **nbrs);
