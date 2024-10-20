@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmorais <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/20 06:21:31 by mmorais           #+#    #+#             */
+/*   Updated: 2024/10/20 06:45:22 by mmorais          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -10,12 +22,19 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
+typedef struct s_loop_vars
+{
+	int	i;
+	int	j;
+	int	aux;
+}	t_loop_vars;
+
 # define ATOI_INDICATOR_ERROR -214748364819
 
 void		ft_add_back(t_stack **stack, t_stack *stack_new);
 t_stack		*ft_stack_new(int content);
 int			ft_check_dup(t_stack *a);
-void	ft_print_error_and_exit(void);
+void		ft_print_error_and_exit(void);
 void		ft_free(t_stack **lst);
 t_stack		*ft_lstlast(t_stack *lst);
 void		ft_ra(t_stack **a, int j);
@@ -56,12 +75,12 @@ t_stack		*ft_validate_and_init_stack(int argc, char **argv);
 void		ft_sb(t_stack **b, int j);
 void		ft_sort_till_3(t_stack **stack_a, t_stack **stack_b);
 long int	ft_atoi(const char *str);
-char	**ft_split(char const *s, char c);
-int	ft_isdigit(int c);
-int    ft_count_each_value(char **nbrs);
-char    **ft_get_each_nbr(char **av, char **numbers, int nbrs_size);
-char	*ft_strdup(const char *s);
-size_t	ft_strlen(const char *s);
-int ft_is_only_space(char *str);
+char		**ft_split(char const *s, char c);
+int			ft_isdigit(int c);
+int			ft_count_each_value(char **nbrs);
+char		**ft_get_each_nbr(char **av, char **numbers, int nbrs_size);
+char		*ft_strdup(const char *s);
+size_t		ft_strlen(const char *s);
+int			ft_is_only_space(char *str);
 
 #endif

@@ -19,7 +19,8 @@ SRC =	push_swap.c \
 		ft_check_best_rotate.c \
 		ft_split.c \
 		utils.c \
-		very_args.c
+		very_args.c \
+		ft_atoi.c
 
 OBJ = ${SRC:.c=.o}
 
